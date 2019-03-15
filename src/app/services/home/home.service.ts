@@ -6,7 +6,7 @@ import { Observable } from "rxjs/Observable";
 import { constantes } from "../../utilitis/constantes";
 
 @Injectable()
-export class LoginService {
+export class HomeService {
   private constantes;
   private url;
 

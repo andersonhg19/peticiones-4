@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+    }
+    body{
+      background:#d2d2d2;
+    }
+    
+    
+    
+    .container .login{
+     max-width: 500px;
+     width: 90%;
+     background: white;
+      margin: 10% auto;
+      padding: 20px;
+      box-shadow: 5px 5px 10px #7b7b7c;
+    }
+    
+    .container .login .encabezado{
+      width: 100%;
+      color: #000;
+      text-align: center;
+      font-size: 30px;
+      padding-top:10px;
+      margin-bottom: 20px;
+    }
+    
+    .container .login .encabezado .inputs{
+      display: flex;
+      flex-direction:column;
+      background: blue;
+    }
+     { color: blue; }
+    .container .login .inputs input[type="text"],
+    .container .login .inputs input[type="password"]{
+      width: 100%;
+      border: none;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 5px;
+      border-bottom: 2px solid #2979FF;
+    
+    }
+    
+    .container .login .inputs input[type="text"]:focus,
+    .container .login .inputs input[type="password"]:focus{
+      outline: none;
+      border-bottom: 2px solid #009688;
+    }
+    
+    /*.container .login .inputs input[type="text"]::-webkit-input-placeholder{
+      color: #2979FF;
+    }*/
+    
+    .container .login .inputs button{
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      padding: 7px;
+      background: #2979FF;
+      border:1px solid #2979FF;
+      color: #fff;
+      font-weight: bold;
+    }
+    

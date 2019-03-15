@@ -1,0 +1,411 @@
+<div class="container-fluid container-modified ">
+  <div class="col-12"><h3 class="mb-3 title">Soporte y Mantenimiento</h3></div>
+  <br />
+
+  <div class="row ">
+    <div class="col-sm-12 col-md-4 float-left d-inline-block dos">
+      <div class="form-group row">
+
+          <div class="col-12 mb-1 mt-1 uno ">
+              <label class="col-4 mb-1 col-form-label pl-2 al "
+                >Tipo mantenimiento:
+              </label>
+              <div class="col-7 float-right">
+                <select
+                  name="supportType"
+                  [(ngModel)]="supportmodel.supportType"
+                  style="width:90%;height: 25px"
+                >
+                <option value="1">Iniciada</option>
+                <option value="2">en proceso</option>
+                <option value="3">terminado</option>
+                <option value="4">suspendido</option>
+                </select>
+              </div>
+
+              <button
+              type="button"
+              class="btn btn-sm btn_success mr-2"
+              (click)="search()"
+            >
+              <i class="fa fa-search"></i> 
+            </button>
+
+            </div>
+    
+
+        </div>
+      </div>
+    </div>
+  
+    <div class="row ">
+        <div class="col-sm-12 col-md-4 float-left d-inline-block dos">
+          <div class="form-group row">
+        
+              <table class="table table-striped table-bordered table-hover" id="table_informe">
+                  <thead>
+                      <tr>
+                          <th class="text-center">ID</th>
+                          <th class="text-center">Problema</th>
+                          <th class="text-center">Prioridad</th>
+                          <th class="text-center">Telefono</th>
+                          <th class="text-center">Descripcion</th>
+                          <th class="text-center">Correo</th>
+                          <th class="text-center">Nombre</th>
+                          <th class="text-center">Estado</th>
+                          <th class="text-center">Editar</th>
+                          <th class="text-center">Reportes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                      </tbody>
+                    </table>
+            </div>
+          </div>
+        </div>
+
+  </div>
+
+  <div
+    class="modal fade"
+    id="edit"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modalBuscar"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-#000 " >
+          <div class="row">
+            <div class="col-12">
+              <h2 class="modal-title mtitle ">
+                  Editar petición
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" *ngFor="let component of components">
+          <div class="row">
+            
+
+       <div class="row ">
+           <div class="col-sm-12 col-md-4 float-left d-inline-block dos">
+             <div class="form-group row">
+                  
+
+
+              <div class="col-12 mb-1 mt-1 uno ">
+                  <label class="col-4 mb-1 col-form-label pl-2 al "
+                    >Tipo mantenimiento:
+                  </label>
+                  <div class="col-7 float-right">
+                    <select
+                      name="supportType"
+                      [(ngModel)]="supportmodel.supportType"
+                      style="width:90%;height: 25px"
+                    >
+                    <option value="1">Iniciada</option>
+                    <option value="2">en proceso</option>
+                    <option value="3">terminado</option>
+                    <option value="4">suspendido</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-1 mt-1 uno ">
+                    <label class="col-4 mb-1 col-form-label pl-2 al "
+                      >Prioridad:
+                    </label>
+                    <div class="col-7 float-right">
+                      <select
+                        name="supportType"
+                        [(ngModel)]="supportmodel.supportType"
+                        style="width:90%;height: 25px"
+                      >
+                      <option value="1">Baja</option>
+                      <option value="2">Media</option>
+                      <option value="3">Alta</option>
+                      <option value="4">Muy alta</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-12 mb-1 mt-1 uno">
+                      <label class=" col-4 col-form-label pl-2 al ">Descripción: </label>
+                      <div class="col-7 float-right">
+                        <textarea
+                          rows="3"
+                          name="description"
+                          [(ngModel)]="description"
+                        ></textarea>
+                      </div>
+                    </div>
+
+                  <div class="col-12 mb-1 mt-1 uno">
+                      <label class=" col-4 col-form-label pl-2 al ">Observaciones: </label>
+                      <div class="col-7 float-right">
+                        <textarea
+                          rows="3"
+                          name="observation"
+                          [(ngModel)]="observation"
+                        ></textarea>
+                      </div>
+                    </div>
+
+
+              </div>
+            </div>
+          </div>
+
+              <div class="modal-footer">
+                  <div class="float-right ">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-danger"
+                      data-dismiss="modal"
+                    >
+                      <i class="fa fa-window-close"></i> Cerrar
+                    </button>
+                  </div>
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div
+    class="modal fade"
+    id="file"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modalBuscar"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-#000 " >
+          <div class="row">
+            <div class="col-12">
+              <h2 class="modal-title mtitle ">
+                  Reporte del {{idpeticion}}
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" *ngFor="let component of components">
+          <div class="row">
+            
+
+       <div class="row ">
+           <div class="col-sm-12 col-md-5 float-left d-inline-block dos">
+             <div class="form-group row">
+                  
+                <div class="col-12 mb-1 mt-1 uno">
+                    <label class="col-4 col-form-label pl-2"
+                      >Id:
+                    </label>
+                    <div class="col-7 float-right">
+                      <label class="col-4 col-form-label pl-2  ">{{
+                       idpeticion
+                      }}</label>
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <div class="col-12 mb-1 mt-1 uno">
+                      <label class="col-4 col-form-label pl-2"
+                        >Tipo de problema:
+                      </label>
+                      <div class="col-7 float-right">
+                        <label class="col-4 col-form-label pl-2  ">{{
+                         typo_problem
+                        }}</label>
+                        <p></p>
+                      </div>
+                    </div>
+
+                    <div class="col-12 mb-1 mt-1 uno">
+                        <label class="col-4 col-form-label pl-2"
+                          >Prioridad:
+                        </label>
+                        <div class="col-7 float-right">
+                          <label class="col-4 col-form-label pl-2  ">{{
+                           priority
+                          }}</label>
+                          <p></p>
+                        </div>
+                      </div>
+
+                      <div class="col-12 mb-1 mt-1 uno">
+                          <label class="col-4 col-form-label pl-2"
+                            >Apellido:
+                          </label>
+                          <div class="col-7 float-right">
+                            <label class="col-4 col-form-label pl-2  ">{{
+                             lastname_user
+                            }}</label>
+                            <p></p>
+                          </div>
+                        </div>
+
+                      <div class="col-12 mb-1 mt-1 uno">
+                          <label class="col-4 col-form-label pl-2"
+                            >Telefonon:
+                          </label>
+                          <div class="col-7 float-right">
+                            <label class="col-4 col-form-label pl-2  ">{{
+                             telefono
+                            }}</label>
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <div class="col-12 mb-1 mt-1 uno">
+                            <label class="col-4 col-form-label pl-2"
+                              >Correo:
+                            </label>
+                            <div class="col-7 float-right">
+                              <label class="col-4 col-form-label pl-2  ">{{
+                               mail
+                              }}</label>
+                              <p></p>
+                            </div>
+                          </div>
+
+                          <div class="col-12 mb-1 mt-1 uno">
+                              <label class="col-4 col-form-label pl-2"
+                                >Estado:
+                              </label>
+                              <div class="col-7 float-right" style="border: 1px solid black; background-color:aqua;">
+                                <label class="col-4 col-form-label pl-2  ">{{
+                                 state
+                                }}</label>
+                                <p></p>
+                              </div>
+                            </div>
+
+                            <div class="col-12 mb-1 mt-1 uno">
+                                <label class="col-4 col-form-label pl-2"
+                                  >Nombre del usuario:
+                                </label>
+                                <div class="col-7 float-right">
+                                  <label class="col-4 col-form-label pl-2  ">{{
+                                   name_user
+                                  }}</label>
+                                  <p></p>
+                                </div>
+                              </div>
+
+                          <div class="col-12 mb-1 mt-1 uno">
+                              <label class="col-4 col-form-label pl-2"
+                                >Apellido:
+                              </label>
+                              <div class="col-7 float-right">
+                                <label class="col-4 col-form-label pl-2  ">{{
+                                 lastname_user
+                                }}</label>
+                                <p></p>
+                              </div>
+                            </div>
+
+                          <div class="col-12 mb-1 mt-1 uno">
+                              <label class="col-4 col-form-label pl-2"
+                                >Fecha:
+                              </label>
+                              <div class="col-7 float-right">
+                                <label class="col-4 col-form-label pl-2  ">{{
+                                 date
+                                }}</label>
+                                <p></p>
+                              </div>
+                            </div>
+
+                            <div class="col-12 mb-1 mt-1 uno">
+                                <label class="col-4 col-form-label pl-2"
+                                  >Descripción:
+                                </label>
+                                <div class="col-7 float-right">
+                                  <label class="col-4 col-form-label pl-2  ">{{
+                                   description
+                                  }}</label>
+                                  <p></p>
+                                </div>
+                              </div>
+
+                              <div class="col-12 mb-1 mt-1 uno">
+                                  <label class="col-4 col-form-label pl-2"
+                                    >Observación:
+                                  </label>
+                                  <div class="col-7 float-right">
+                                    <label class="col-4 col-form-label pl-2  ">{{
+                                     observation
+                                    }}</label>
+                                    <p></p>
+                                  </div>
+                                </div>
+
+                                <div class="col-12 mb-1 mt-1 uno">
+                                    <label class="col-4 col-form-label pl-2"
+                                      >Estado:
+                                    </label>
+                                    <div class="col-7 float-right">
+                                      <label class="col-4 col-form-label pl-2  ">{{
+                                       state
+                                      }}</label>
+                                      <p></p>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-12 mb-1 mt-1 uno">
+                                      <label class="col-4 col-form-label pl-2"
+                                        >Nombre del usuario:
+                                      </label>
+                                      <div class="col-7 float-right">
+                                        <label class="col-4 col-form-label pl-2  ">{{
+                                         name_user
+                                        }}</label>
+                                        <p></p>
+                                      </div>
+                                    </div>
+
+                                 
+
+                                    
+
+              </div>
+            </div>
+          </div>
+
+              <div class="modal-footer">
+                  <div class="float-right ">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-danger"
+                      data-dismiss="modal"
+                    >
+                      <i class="fa fa-window-close"></i> Cerrar
+                    </button>
+                  </div>
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

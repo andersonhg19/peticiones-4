@@ -1,22 +1,22 @@
 
 import { Injectable } from "@angular/core";
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
-import { constantes } from "../../utilitis/constantes";
+import { HttpClient } from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import { from } from 'rxjs';
 
+import { constantes } from "../../utilitis/constantes";
 @Injectable()
 export class LoginService {
   private constantes;
   private url;
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     this.constantes = new constantes();
   }
 
   save(params) {
     this.url = this.constantes.getRouterGlobal() + "support/save";
-    return this.http.post(this.url, params).map(res => res.json());
-  }
+    return this.http.post(this.url, params).pipe(map(res => res.json()));
+
   
-}
+}}

@@ -6,7 +6,7 @@
     <div class="inputs">
       <input type="text" name="usuario"  placeholder="Usuario" [(ngModel)] = "loginmodel.user">
       <input type="password" name="password1"  placeholder="Contraseña" [(ngModel)] = "loginmodel.password">
-      <button type="submit" name="button1" class="btn btn-primary btn-md m-auto">Iniciar</button>
+      <button type="submit" name="button1" class="btn btn-primary btn-md m-auto" (click)="create()">Iniciar</button>
     </div>
   </div>
 </div>

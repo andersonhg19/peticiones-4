@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
   }
 
   validate_auth(loginmodel) {
-      let _user = JSON.stringify(loginmodel);
+    console.log(loginmodel)
+      let _user = JSON.stringify(loginmodel.result);
       localStorage.setItem("user", _user);
       this.validate_session();
   }

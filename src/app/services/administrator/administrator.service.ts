@@ -5,7 +5,7 @@ import "rxjs/add/operator/map";
 import { constantes } from "../../utilitis/constantes";
 
 @Injectable()
-export class HomeService {
+export class AdministratorService {
   private constantes;
   private url;
 
@@ -13,11 +13,14 @@ export class HomeService {
     this.constantes = new constantes();
   }
 
-  create(params) {
-    this.url = this.constantes.getRouterGlobal() + "home/create";
-
-    return this.http.post(this.url, params).map(res => console.log(res));
+  search(params) {
+    this.url = this.constantes.getRouterGlobal() + "administrator/search";
+    return this.http.post(this.url, params).pipe(result=>result);
   }
-
+  
+  update(params) {
+    this.url = this.constantes.getRouterGlobal() + "administrator/update";
+    return this.http.post(this.url, params).pipe(result=>result);
+  }
   
 }

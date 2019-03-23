@@ -22,22 +22,24 @@
           
         <div class="col-sm-12 col-md-4 mb-1 mt-1 uno ">
           <label class="col-4 col-form-label pl-2  al"
-            >Problema que preseta:
+            >Problema que presenta:
           </label>
           <div class="col-7 float-right">
             <select
                class="form-control input-modified"
                name="problem"
-               [(ngModel)]="problem"
+               [(ngModel)]="homemodel.problem"
           >
-          <option value="1">Nomina</option>
-          <option value="2">SIP</option>
-          <option value="3">Office</option>
-          <option value="4">Impresion</option>
-          <option value="5">Problemas con el equipo</option>
-          <option value="6">Internet</option>
-          <option value="7">SION</option>
-          <option value="8">Otros</option>
+          <option value="Nomina">Nomina</option>
+          <option value="SIP">SIP</option>
+          <option value="Office">Office</option>
+          <option value="Impresion">Impresoras</option>
+          <option value="Problemas con el equipo">Problemas con el equipo</option>
+          <option value="Internet">Internet</option>
+          <option value="Correo">Correo</option>
+          <option value="Telefono">Telefono</option>
+          <option value="Telefono">GPS</option>
+          <option value="Otros">Otros</option>
           </select>
           </div>
         </div>
@@ -50,12 +52,12 @@
             <select
                class="form-control input-modified"
                name="priority"
-               [(ngModel)]="priority"
+               [(ngModel)]="homemodel.priority"
           >
-            <option value="1">Baja</option>
-            <option value="2">Media</option>
-            <option value="3">Alta</option>
-            <option value="4">Muy alta</option>
+            <option value="Baja">Baja</option>
+            <option value="Media">Media</option>
+            <option value="Alta">Alta</option>
+            <option value="Muy alta">Muy alta</option>
           </select>
           </div>
         </div>        
@@ -69,7 +71,7 @@
               class="form-control input-modified"
               type="text"
               name="phone"
-              [(ngModel)]="phone"
+              [(ngModel)]="homemodel.phone"
             />
           </div>
         </div>
@@ -83,7 +85,7 @@
               class="form-control input-modified"
               type="text"
               name="mail"
-              [(ngModel)]="mail"
+              [(ngModel)]="homemodel.mail"
             />
           </div>
         </div>
@@ -97,7 +99,7 @@
              class="col-12"
              rows="3"
              name="description"
-             [(ngModel)]="descriptio"
+             [(ngModel)]="homemodel.description"
             
            ></textarea>
           </div>
@@ -112,7 +114,7 @@
 
           <button
           type="button" class="btn btn-primary btn-sm mr-3 d-inline-block"
-           > <i class="fa fa-eye"></i>
+           (click)="submit()"> <i class="fa fa-eye"></i>
           Enviar
         </button>
 

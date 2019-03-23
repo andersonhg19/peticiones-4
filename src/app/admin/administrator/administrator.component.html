@@ -8,24 +8,23 @@
 
           <div class="col-12 mb-1 mt-1 uno ">
               <label class="col-4 mb-1 col-form-label pl-2 al "
-                >Tipo mantenimiento:
+                >Estado del mantenimiento:
               </label>
               <div class="col-7 float-right">
                 <select
                   name="supportType"
-                  [(ngModel)]="supportmodel.supportType"
+                  [(ngModel)]="administratormodel.supportType"
                   style="width:90%;height: 25px"
                 >
-                <option value="1">Iniciada</option>
-                <option value="2">en proceso</option>
-                <option value="3">terminado</option>
-                <option value="4">suspendido</option>
+                <option value="en proceso">en proceso</option>
+                <option value="terminado">terminado</option>
+                <option value="suspendido">suspendido</option>
                 </select>
               </div>
 
               <button
               type="button"
-              class="btn btn-sm btn_success mr-2"
+              class="btn btn-sm btn-success mr-2"
               (click)="search()"
             >
               <i class="fa fa-search"></i> 
@@ -45,30 +44,36 @@
               <table class="table table-striped table-bordered table-hover" id="table_informe">
                   <thead>
                       <tr>
-                          <th class="text-center">ID</th>
+                          <th class="text-center">Id</th>
                           <th class="text-center">Problema</th>
                           <th class="text-center">Prioridad</th>
                           <th class="text-center">Telefono</th>
                           <th class="text-center">Descripcion</th>
                           <th class="text-center">Correo</th>
                           <th class="text-center">Nombre</th>
-                          <th class="text-center">Estado</th>
+                          <th class="text-center">Fecha</th>
                           <th class="text-center">Editar</th>
                           <th class="text-center">Reportes</th>
                         </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                          <tr *ngFor="let row of rows1; index as i">
+                              <td>{{ i + 1 }}</td>
+                              <td>{{ row.problema }}</td>
+                              <td>{{ row.prioridad }}</td>
+                              <td>{{ row.telefono }}</td>
+                              <td>{{ row.descripcion }}</td>
+                              <td>{{ row.correo }}</td>
+                              <td>{{ row.nombre }}</td>
+                              <td>{{ row.fecha }}</td>
+                              <td><button type="button" class="btn btn-sm btn-primary m-2"
+                                data-toggle="modal" data-target="#edit"
+                                (click)="btn_update(i, row)"><i class="fa fa-edit"></i> 
+                                      </button></td>
+                              <td><button type="button" class="btn btn-sm btn-primary m-2"
+                                data-toggle="modal" data-target="#file"
+                                (click)="btn_file(i, row)"><i class="fa fa-book"></i> 
+                                      </button></td>
                           </tr>
                       </tbody>
                     </table>
@@ -97,7 +102,7 @@
             </div>
           </div>
         </div>
-        <div class="modal-body" *ngFor="let component of components">
+        <div class="modal-body" >
           <div class="row">
             
 
@@ -109,18 +114,18 @@
 
               <div class="col-12 mb-1 mt-1 uno ">
                   <label class="col-4 mb-1 col-form-label pl-2 al "
-                    >Tipo mantenimiento:
+                    >Estado del mantenimiento:
                   </label>
                   <div class="col-7 float-right">
                     <select
                       name="supportType"
-                      [(ngModel)]="supportmodel.supportType"
+                      [(ngModel)]="administratormodel.state"
                       style="width:90%;height: 25px"
                     >
-                    <option value="1">Iniciada</option>
-                    <option value="2">en proceso</option>
-                    <option value="3">terminado</option>
-                    <option value="4">suspendido</option>
+
+                    <option value="en proceso">en proceso</option>
+                    <option value="terminado">terminado</option>
+                    <option value="suspendido">suspendido</option>
                     </select>
                   </div>
                 </div>
@@ -131,14 +136,14 @@
                     </label>
                     <div class="col-7 float-right">
                       <select
-                        name="supportType"
-                        [(ngModel)]="supportmodel.supportType"
+                        name="priority"
+                        [(ngModel)]="administratormodel.priority"
                         style="width:90%;height: 25px"
                       >
-                      <option value="1">Baja</option>
-                      <option value="2">Media</option>
-                      <option value="3">Alta</option>
-                      <option value="4">Muy alta</option>
+                      <option value="Baja">Baja</option>
+                      <option value="Media">Media</option>
+                      <option value="Alta">Alta</option>
+                      <option value="Muy alta">Muy alta</option>
                       </select>
                     </div>
                   </div>
@@ -149,7 +154,7 @@
                         <textarea
                           rows="3"
                           name="description"
-                          [(ngModel)]="description"
+                          [(ngModel)]="administratormodel.description"
                         ></textarea>
                       </div>
                     </div>
@@ -160,7 +165,7 @@
                         <textarea
                           rows="3"
                           name="observation"
-                          [(ngModel)]="observation"
+                          [(ngModel)]="administratormodel.observation"
                         ></textarea>
                       </div>
                     </div>
@@ -174,10 +179,18 @@
                   <div class="float-right ">
                     <button
                       type="button"
-                      class="btn btn-sm btn-danger"
+                      class="btn btn-sm btn-danger m-2"
                       data-dismiss="modal"
                     >
                       <i class="fa fa-window-close"></i> Cerrar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-primary m-2"
+                      data-dismiss="modal"
+                      (click)="update()"
+                    >
+                      <i class="fa fa-edit"></i> Editar
                     </button>
                   </div>
                 </div>
@@ -197,18 +210,18 @@
     aria-labelledby="modalBuscar"
     aria-hidden="true"
   >
-    <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-dialog  modal-lg" role="document" >
       <div class="modal-content ">
         <div class="modal-header bg-#000 " >
           <div class="row">
             <div class="col-12">
               <h2 class="modal-title mtitle ">
-                  Reporte del {{idpeticion}}
+                  Reporte del id: {{ data2 }}
               </h2>
             </div>
           </div>
         </div>
-        <div class="modal-body" *ngFor="let component of components">
+        <div class="modal-body" >
           <div class="row">
             
 
@@ -222,7 +235,7 @@
                     </label>
                     <div class="col-7 float-right">
                       <label class="col-4 col-form-label pl-2  ">{{
-                       idpeticion
+                       data2
                       }}</label>
                       <p></p>
                     </div>
@@ -234,7 +247,7 @@
                       </label>
                       <div class="col-7 float-right">
                         <label class="col-4 col-form-label pl-2  ">{{
-                         typo_problem
+                         data3
                         }}</label>
                         <p></p>
                       </div>
@@ -246,7 +259,7 @@
                         </label>
                         <div class="col-7 float-right">
                           <label class="col-4 col-form-label pl-2  ">{{
-                           priority
+                           data4
                           }}</label>
                           <p></p>
                         </div>
@@ -254,11 +267,11 @@
 
                       <div class="col-12 mb-1 mt-1 uno">
                           <label class="col-4 col-form-label pl-2"
-                            >Apellido:
+                            >Nombre:
                           </label>
                           <div class="col-7 float-right">
                             <label class="col-4 col-form-label pl-2  ">{{
-                             lastname_user
+                             data5
                             }}</label>
                             <p></p>
                           </div>
@@ -270,7 +283,7 @@
                           </label>
                           <div class="col-7 float-right">
                             <label class="col-4 col-form-label pl-2  ">{{
-                             telefono
+                             data8
                             }}</label>
                             <p></p>
                           </div>
@@ -282,7 +295,7 @@
                             </label>
                             <div class="col-7 float-right">
                               <label class="col-4 col-form-label pl-2  ">{{
-                               mail
+                               data7
                               }}</label>
                               <p></p>
                             </div>
@@ -292,37 +305,14 @@
                               <label class="col-4 col-form-label pl-2"
                                 >Estado:
                               </label>
-                              <div class="col-7 float-right" style="border: 1px solid black; background-color:aqua;">
+                              <div class="col-7 float-right" >
                                 <label class="col-4 col-form-label pl-2  ">{{
-                                 state
+                                 data9
                                 }}</label>
                                 <p></p>
                               </div>
                             </div>
 
-                            <div class="col-12 mb-1 mt-1 uno">
-                                <label class="col-4 col-form-label pl-2"
-                                  >Nombre del usuario:
-                                </label>
-                                <div class="col-7 float-right">
-                                  <label class="col-4 col-form-label pl-2  ">{{
-                                   name_user
-                                  }}</label>
-                                  <p></p>
-                                </div>
-                              </div>
-
-                          <div class="col-12 mb-1 mt-1 uno">
-                              <label class="col-4 col-form-label pl-2"
-                                >Apellido:
-                              </label>
-                              <div class="col-7 float-right">
-                                <label class="col-4 col-form-label pl-2  ">{{
-                                 lastname_user
-                                }}</label>
-                                <p></p>
-                              </div>
-                            </div>
 
                           <div class="col-12 mb-1 mt-1 uno">
                               <label class="col-4 col-form-label pl-2"
@@ -330,7 +320,7 @@
                               </label>
                               <div class="col-7 float-right">
                                 <label class="col-4 col-form-label pl-2  ">{{
-                                 date
+                                 data6
                                 }}</label>
                                 <p></p>
                               </div>
@@ -342,7 +332,7 @@
                                 </label>
                                 <div class="col-7 float-right">
                                   <label class="col-4 col-form-label pl-2  ">{{
-                                   description
+                                   data5
                                   }}</label>
                                   <p></p>
                                 </div>
@@ -354,39 +344,11 @@
                                   </label>
                                   <div class="col-7 float-right">
                                     <label class="col-4 col-form-label pl-2  ">{{
-                                     observation
+                                     data10
                                     }}</label>
                                     <p></p>
                                   </div>
-                                </div>
-
-                                <div class="col-12 mb-1 mt-1 uno">
-                                    <label class="col-4 col-form-label pl-2"
-                                      >Estado:
-                                    </label>
-                                    <div class="col-7 float-right">
-                                      <label class="col-4 col-form-label pl-2  ">{{
-                                       state
-                                      }}</label>
-                                      <p></p>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-12 mb-1 mt-1 uno">
-                                      <label class="col-4 col-form-label pl-2"
-                                        >Nombre del usuario:
-                                      </label>
-                                      <div class="col-7 float-right">
-                                        <label class="col-4 col-form-label pl-2  ">{{
-                                         name_user
-                                        }}</label>
-                                        <p></p>
-                                      </div>
-                                    </div>
-
-                                 
-
-                                    
+                                </div>                                    
 
               </div>
             </div>

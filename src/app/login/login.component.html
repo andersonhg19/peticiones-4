@@ -4,9 +4,13 @@
       <h1>INICIAR SESION</h1>
     </div>
     <div class="inputs">
-      <input type="text" name="usuario"  placeholder="Usuario" [(ngModel)] = "loginmodel.user">
-      <input type="password" name="password1"  placeholder="Contraseña" [(ngModel)] = "loginmodel.password">
-      <button type="submit" name="button1" class="btn btn-primary btn-md m-auto" (click)="login()">Iniciar</button>
+      <input type="text" name="usuario"  placeholder="Usuario" [(ngModel)] = "loginmodel.user" class="uno">
+      <input type="password" name="password1"  placeholder="Contraseña" [(ngModel)] = "loginmodel.password" class="uno">
+     <div class="row">
+       <div class="col-6 m-auto">
+      <button type="submit" name="button1" class="  btn btn-primary btn-md " (click)="login()"><i class="fa fa-user-tie"></i>  INICIAR</button>
     </div>
+  </div>
+  </div>
   </div>
 </div>

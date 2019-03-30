@@ -6,6 +6,7 @@ import { AdminComponent } from "./admin.component";
 import { AdministratorComponent } from './administrator/administrator.component';
 import { SistemasComponent } from './sistemas/sistemas.component';
 import { FormsModule } from '@angular/forms';
+import { NabvarComponent } from './nabvar/nabvar.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     AdministratorComponent, 
     SistemasComponent,
     HomeComponent,
-    AdminComponent]
+    AdminComponent,
+    NabvarComponent]
 })
 export class AdminModule {}

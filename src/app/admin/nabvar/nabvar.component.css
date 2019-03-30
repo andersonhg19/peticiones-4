@@ -1,0 +1,19 @@
+.dropdown-menu .dropdown-item,
+.navbar {
+  font-size: 0.9em;
+}
+
+.navbar {
+  background: rgb(32, 32, 32);
+  padding: 0;
+  padding-right: 4em;
+}
+
+.navbar__icon {
+  font-size: 1.5em;
+  padding-left: 30px;
+}
+
+.navbar-inverse .navbar-nav .nav-link {
+  color: white;
+}

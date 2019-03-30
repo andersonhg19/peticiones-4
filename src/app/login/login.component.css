@@ -1,19 +1,15 @@
-*{
-    box-sizing: border-box;
-    }
-    body{
-      background:#d2d2d2;
-    }
-    
+
     
     
     .container .login{
+      text-shadow: 2px 2px 5px #7b7b7ce3;
      max-width: 500px;
      width: 90%;
      background: white;
       margin: 10% auto;
       padding: 20px;
-      box-shadow: 5px 5px 10px #7b7b7c;
+      border-radius: 7px;
+      box-shadow: 5px 5px 10px #7b7b7ce3;
     }
     
     .container .login .encabezado{
@@ -28,9 +24,10 @@
     .container .login .encabezado .inputs{
       display: flex;
       flex-direction:column;
-      background: blue;
+      background: rgb(28, 111, 253);;
+     color: rgb(15, 15, 15); 
     }
-     { color: blue; }
+
     .container .login .inputs input[type="text"],
     .container .login .inputs input[type="password"]{
       width: 100%;
@@ -38,14 +35,14 @@
       height: 40px;
       margin-bottom: 20px;
       padding: 5px;
-      border-bottom: 2px solid #2979FF;
+      border-bottom: 2px solid rgb(75, 141, 255);;
     
     }
     
     .container .login .inputs input[type="text"]:focus,
     .container .login .inputs input[type="password"]:focus{
       outline: none;
-      border-bottom: 2px solid #009688;
+      border-bottom: 2px solid #031ba1;
     }
     
     /*.container .login .inputs input[type="text"]::-webkit-input-placeholder{
@@ -57,9 +54,11 @@
       width: 100%;
       border: none;
       padding: 7px;
-      background: #2979FF;
-      border:1px solid #2979FF;
+      background: rgb(28, 111, 253);
+      box-shadow: 2px 2px 5px #7b7b7ce3;
       color: #fff;
       font-weight: bold;
+     
+      
     }
     

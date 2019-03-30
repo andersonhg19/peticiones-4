@@ -4,6 +4,8 @@ import { Routes, Router, RouterModule } from '@angular/router';
 import { AdminComponent } from "./admin.component";
 import { HomeComponent } from "./home/home.component";
 import { AdministratorComponent } from "./administrator/administrator.component";
+import { NabvarComponent } from './nabvar/nabvar.component';
+
 
 export const routes: Routes = [
     {
@@ -21,6 +23,10 @@ export const routes: Routes = [
               {
                 path: "administrator",
                 component: AdministratorComponent,
+              },
+              {
+                path: "nabvar",
+                component: NabvarComponent,
               }
 
         ]        

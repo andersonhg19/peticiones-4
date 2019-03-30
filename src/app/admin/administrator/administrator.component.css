@@ -1,0 +1,11 @@
+.container{
+    background-color: white;
+    padding: 2rem;
+  }
+  th{
+      color: #fff;
+      background-color: rgb(24, 24, 24);
+  }
+  td{
+      max-width:100%;
+  }
